@@ -661,7 +661,7 @@ export const defaultSiteContent = {
         ],
         formspreeId: "mjgandke",
         formAction: "https://formspree.io/f/mjgandke",
-        googleScriptUrl: "https://script.google.com/macros/s/AKfycbx1DCAM9Yqa-ysi496u6VvWx5gUYWgmRycSKNGdKl2LFREhbej7Xddtxie3cVzmCnFqbA/exec",
+        googleScriptUrl: "https://script.google.com/macros/s/AKfycbzYvZWz7f6pREZ4gD0y26grOrdLhcIe8EEP9w1lE_Zp_WUndUu6EcUaQHafkI2umnNE/exec",
         labels: {
             name: "Name",
             email: "Email",
