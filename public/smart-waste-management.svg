@@ -1,0 +1,27 @@
+<svg width="1024" height="672" viewBox="0 0 1024 672" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1024" height="672" fill="#07111F"/>
+  <rect x="58" y="54" width="908" height="564" rx="38" fill="#0D1728" stroke="#23533D" stroke-width="2"/>
+  <text x="96" y="138" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="900">IoT Smart Waste</text>
+  <text x="96" y="178" fill="#86EFAC" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800">Management System</text>
+  <rect x="108" y="238" width="206" height="282" rx="28" fill="#10251E" stroke="#22C55E" stroke-width="3"/>
+  <rect x="136" y="208" width="150" height="46" rx="18" fill="#16A34A"/>
+  <rect x="150" y="300" width="122" height="164" rx="22" fill="#166534"/>
+  <rect x="174" y="326" width="74" height="18" rx="9" fill="#BBF7D0"/>
+  <rect x="174" y="366" width="74" height="18" rx="9" fill="#86EFAC"/>
+  <rect x="174" y="406" width="74" height="18" rx="9" fill="#4ADE80"/>
+  <path d="M210 526V568M176 568H244" stroke="#86EFAC" stroke-width="12" stroke-linecap="round"/>
+  <rect x="392" y="238" width="250" height="282" rx="30" fill="#102033" stroke="#24506E"/>
+  <text x="424" y="292" fill="#E0F2FE" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="850">Sensor Status</text>
+  <rect x="424" y="338" width="160" height="18" rx="9" fill="#334155"/>
+  <rect x="424" y="382" width="104" height="18" rx="9" fill="#22C55E"/>
+  <rect x="424" y="426" width="178" height="18" rx="9" fill="#38BDF8"/>
+  <circle cx="584" cy="396" r="28" fill="#22C55E"/>
+  <text x="558" y="404" fill="#052E16" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="900">IoT</text>
+  <path d="M326 382C350 344 374 344 398 382" stroke="#22D3EE" stroke-width="10" stroke-linecap="round"/>
+  <path d="M654 382C700 316 768 316 814 382" stroke="#22D3EE" stroke-width="10" stroke-linecap="round"/>
+  <rect x="704" y="250" width="200" height="258" rx="30" fill="#10251E" stroke="#22C55E"/>
+  <text x="740" y="304" fill="#DCFCE7" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="850">Dashboard</text>
+  <rect x="740" y="350" width="128" height="20" rx="10" fill="#22C55E"/>
+  <rect x="740" y="394" width="96" height="20" rx="10" fill="#84CC16"/>
+  <rect x="740" y="438" width="138" height="20" rx="10" fill="#38BDF8"/>
+</svg>

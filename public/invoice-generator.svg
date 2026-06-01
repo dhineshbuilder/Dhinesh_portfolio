@@ -1,0 +1,23 @@
+<svg width="1024" height="672" viewBox="0 0 1024 672" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1024" height="672" fill="#07111F"/>
+  <rect x="58" y="54" width="908" height="564" rx="38" fill="#0E1726" stroke="#274060" stroke-width="2"/>
+  <rect x="96" y="88" width="832" height="92" rx="28" fill="#111F35"/>
+  <text x="132" y="144" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="900">Invoice Generator</text>
+  <rect x="704" y="112" width="160" height="42" rx="21" fill="#22D3EE"/>
+  <text x="748" y="139" fill="#052333" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="900">BILLING</text>
+  <rect x="126" y="224" width="440" height="344" rx="28" fill="#F8FAFC"/>
+  <text x="166" y="286" fill="#0F172A" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="900">INVOICE</text>
+  <rect x="166" y="326" width="210" height="16" rx="8" fill="#CBD5E1"/>
+  <rect x="166" y="360" width="274" height="16" rx="8" fill="#CBD5E1"/>
+  <rect x="166" y="426" width="330" height="20" rx="10" fill="#94A3B8"/>
+  <rect x="166" y="466" width="330" height="20" rx="10" fill="#94A3B8"/>
+  <rect x="166" y="506" width="198" height="20" rx="10" fill="#94A3B8"/>
+  <rect x="404" y="504" width="92" height="34" rx="12" fill="#22C55E"/>
+  <text x="426" y="527" fill="#052E16" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="900">Paid</text>
+  <rect x="630" y="246" width="268" height="86" rx="24" fill="#11263B" stroke="#23527A"/>
+  <text x="662" y="300" fill="#E0F2FE" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="850">Client Details</text>
+  <rect x="630" y="370" width="268" height="86" rx="24" fill="#11263B" stroke="#23527A"/>
+  <text x="662" y="424" fill="#E0F2FE" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="850">Auto Totals</text>
+  <rect x="630" y="494" width="190" height="54" rx="22" fill="#38BDF8"/>
+  <text x="674" y="529" fill="#082F49" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900">Export PDF</text>
+</svg>

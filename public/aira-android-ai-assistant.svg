@@ -1,0 +1,23 @@
+<svg width="1024" height="672" viewBox="0 0 1024 672" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1024" height="672" fill="#07111F"/>
+  <rect x="58" y="54" width="908" height="564" rx="38" fill="#0D1728" stroke="#243B61" stroke-width="2"/>
+  <rect x="112" y="86" width="306" height="500" rx="46" fill="#111827" stroke="#2DD4BF" stroke-width="3"/>
+  <rect x="138" y="132" width="254" height="398" rx="28" fill="#0F2531"/>
+  <circle cx="265" cy="184" r="44" fill="#115E59"/>
+  <path d="M232 183C242 164 288 164 298 183" stroke="#99F6E4" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="250" cy="183" r="6" fill="#ECFEFF"/>
+  <circle cx="280" cy="183" r="6" fill="#ECFEFF"/>
+  <rect x="168" y="278" width="194" height="38" rx="19" fill="#164E63"/>
+  <text x="192" y="303" fill="#ECFEFF" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="800">How can I help?</text>
+  <rect x="168" y="344" width="150" height="28" rx="14" fill="#0E7490"/>
+  <rect x="168" y="390" width="194" height="28" rx="14" fill="#134E4A"/>
+  <rect x="172" y="552" width="186" height="10" rx="5" fill="#334155"/>
+  <text x="500" y="168" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="900">AIRA</text>
+  <text x="500" y="210" fill="#67E8F9" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800">Android AI Assistant</text>
+  <rect x="500" y="276" width="360" height="74" rx="24" fill="#102033" stroke="#24506E"/>
+  <text x="532" y="322" fill="#E0F2FE" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="850">Voice and chat support</text>
+  <rect x="500" y="382" width="270" height="74" rx="24" fill="#0F2A38" stroke="#0E7490"/>
+  <text x="532" y="428" fill="#CCFBF1" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="850">AI task guidance</text>
+  <rect x="500" y="490" width="318" height="20" rx="10" fill="#14B8A6"/>
+  <rect x="500" y="526" width="222" height="20" rx="10" fill="#22D3EE"/>
+</svg>
