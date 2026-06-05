@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { ContentProvider, useContent } from "./context/ContentContext";
 import { ThemeProvider } from "./context/ThemeContext";
 import Navbar from "./components/layout/Navbar";
@@ -9,7 +10,8 @@ import Timeline from "./components/sections/Timeline";
 import Certificates from "./components/sections/Certificates";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/layout/Footer";
-import PortfolioChatbot from "./components/common/PortfolioChatbot";
+
+const PortfolioChatbot = lazy(() => import("./components/common/PortfolioChatbot"));
 
 const PortfolioShell = () => {
     const { content } = useContent();
@@ -28,7 +30,9 @@ const PortfolioShell = () => {
                     {content.contact.enabled && <Contact />}
                 </main>
                 {content.footer.enabled && <Footer />}
-                <PortfolioChatbot />
+                <Suspense fallback={null}>
+                    <PortfolioChatbot />
+                </Suspense>
             </div>
         </div>
     );
