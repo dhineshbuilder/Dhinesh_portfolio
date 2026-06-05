@@ -9,6 +9,7 @@ import Timeline from "./components/sections/Timeline";
 import Certificates from "./components/sections/Certificates";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/layout/Footer";
+import PortfolioChatbot from "./components/common/PortfolioChatbot";
 
 const PortfolioShell = () => {
     const { content } = useContent();
@@ -27,6 +28,7 @@ const PortfolioShell = () => {
                     {content.contact.enabled && <Contact />}
                 </main>
                 {content.footer.enabled && <Footer />}
+                <PortfolioChatbot />
             </div>
         </div>
     );

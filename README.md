@@ -1,6 +1,6 @@
 # DHINESH Portfolio
 
-A modern personal portfolio for DHINESH, built with React, Vite, Tailwind CSS, GSAP, and Three.js. It presents profile details, skills, featured projects, timeline highlights, certificates, and contact options in a polished single-page experience.
+A modern personal portfolio for DHINESH, built with React, Vite, Tailwind CSS, and a Vercel serverless chatbot powered by Groq. It presents profile details, skills, featured projects, achievements, certificates, contact options, and a grounded portfolio assistant in a polished single-page experience.
 
 ## Live Deployment
 
@@ -14,13 +14,14 @@ A modern personal portfolio for DHINESH, built with React, Vite, Tailwind CSS, G
 
 ## Features
 
-- Animated hero section with role typing effect and social profile links.
-- Interactive 3D starfield background using Three.js and React Three Fiber.
-- Responsive navigation with mobile menu and theme selector.
+- Premium light-theme hero section with recruiter-focused positioning.
+- Responsive navigation with active section highlighting and mobile menu.
 - Centralized content management through one data file.
 - Featured project cards with GitHub, live demo, and Play Store links.
-- Skills, timeline, certificates, and contact sections.
-- Contact form wired to a Google Apps Script endpoint.
+- Icon-based skills, achievements, certificates, and contact sections.
+- Portfolio-only chatbot using Groq through a Vercel Function.
+- Chatbot retrieval scans source portfolio content and refuses unrelated questions.
+- Contact form wired through Formspree.
 - Optimized image assets for profile, timeline, and certificates.
 - Production-ready Vite build configured for Vercel deployment.
 
@@ -36,6 +37,8 @@ A modern personal portfolio for DHINESH, built with React, Vite, Tailwind CSS, G
 - React Icons
 - React Scroll
 - Formspree React package
+- Vercel Functions
+- Groq Chat Completions API
 - Sharp for image optimization
 
 ## Architecture Overview
@@ -59,6 +62,8 @@ flowchart TD
 
 ```text
 .
+|-- api/
+|   `-- chat.js
 |-- public/
 |   |-- screenshots/
 |   |-- optimized/
@@ -110,6 +115,13 @@ The local app will run at:
 http://127.0.0.1:5173/
 ```
 
+For the chatbot API locally, use Vercel Dev so `/api/chat` runs as a serverless function:
+
+```bash
+npm install -g vercel
+vercel dev
+```
+
 ### Build for Production
 
 ```bash
@@ -144,6 +156,17 @@ This project is configured for Vercel.
 - Build command: `npm run build`
 - Output directory: `dist`
 - Live URL: [https://dhinesh-alpha.vercel.app/](https://dhinesh-alpha.vercel.app/)
+
+### Required Environment Variables
+
+Set these in Vercel Project Settings -> Environment Variables:
+
+```text
+GROQ_API_KEY=your_groq_api_key_here
+GROQ_MODEL=llama-3.3-70b-versatile
+```
+
+`GROQ_MODEL` is optional. The app defaults to `llama-3.3-70b-versatile` if it is not set.
 
 ## Updating Portfolio Content
 

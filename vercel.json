@@ -1,4 +1,19 @@
 {
+  "functions": {
+    "api/chat.js": {
+      "maxDuration": 30,
+      "includeFiles": [
+        "README.md",
+        "index.html",
+        "package.json",
+        "src/**",
+        "public/*.svg",
+        "public/timeline/*.svg",
+        "public/projects/**",
+        "public/optimized/**"
+      ]
+    }
+  },
   "rewrites": [
     {
       "source": "/api/leetcode",
