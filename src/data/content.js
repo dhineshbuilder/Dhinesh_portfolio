@@ -415,6 +415,18 @@ export const defaultSiteContent = {
             },
             {
                 id: 4,
+                title: "ArjunAI WhatsApp Automation CRM",
+                description: "WhatsApp-first AI lead capture system with an autonomous chat agent and CRM dashboard for tracking qualified conversations.",
+                problem: "Manual WhatsApp lead follow-up is hard to track at scale. This system captures conversations, stores lead data, and gives teams a dashboard for follow-up decisions.",
+                features: ["WhatsApp AI agent using whatsapp-web.js", "Groq-powered replies with persistent conversation memory", "Supabase lead capture with business, budget, timeline, and meeting intent", "React CRM dashboard with lead metrics, summaries, and conversation history"],
+                tech: ["React", "TypeScript", "Node.js", "Express.js", "Groq", "Supabase", "WhatsApp Web.js", "Tailwind CSS"],
+                github: "https://github.com/dhineshbuilder/whatsapp_automation.git",
+                demo: "",
+                image: "/leadflow-whatsapp-automation.svg",
+                featured: true,
+            },
+            {
+                id: 5,
                 title: "Face Recognition Attendance System",
                 description: "Attendance platform using face recognition to streamline check-ins and record tracking.",
                 problem: "Manual attendance takes time and can be difficult to verify. This system supports faster identity-based check-ins and cleaner attendance records.",
@@ -423,10 +435,10 @@ export const defaultSiteContent = {
                 github: "https://github.com/6ixmindslabs-hue/ATTENDANCE-SYSTEM.git",
                 demo: "",
                 image: "/face-recognition-attendance.svg",
-                featured: true,
+                featured: false,
             },
             {
-                id: 5,
+                id: 6,
                 title: "AIRA - Android AI Assistant",
                 description: "Android AI assistant focused on conversational support and practical daily task help.",
                 tech: ["Android", "AI", "Assistant"],
@@ -436,7 +448,7 @@ export const defaultSiteContent = {
                 featured: false,
             },
             {
-                id: 6,
+                id: 7,
                 title: "6ixminds Labs Website",
                 description: "Company website for 6ixminds Labs with a polished public presence and content-focused pages.",
                 tech: ["React", "Web", "Company Site"],
@@ -446,7 +458,7 @@ export const defaultSiteContent = {
                 featured: false,
             },
             {
-                id: 7,
+                id: 8,
                 title: "Offline Canteen POS System",
                 description: "Offline-first POS system enabling uninterrupted billing, order management, and sales tracking without internet connectivity.",
                 tech: ["React", "Node.js", "Local Storage"],
@@ -456,7 +468,7 @@ export const defaultSiteContent = {
                 featured: false,
             },
             {
-                id: 8,
+                id: 9,
                 title: "IoT Smart Waste Management System",
                 description: "IoT-based smart waste management dashboard for monitoring bins and improving collection workflows.",
                 tech: ["IoT", "React", "Dashboard"],
@@ -466,7 +478,7 @@ export const defaultSiteContent = {
                 featured: false,
             },
             {
-                id: 9,
+                id: 10,
                 title: "Invoice Generator",
                 description: "Invoice creation tool for generating clean bills and managing lightweight billing workflows.",
                 tech: ["React", "JavaScript", "Billing"],

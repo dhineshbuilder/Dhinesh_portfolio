@@ -115,11 +115,10 @@ The local app will run at:
 http://127.0.0.1:5173/
 ```
 
-For the chatbot API locally, use Vercel Dev so `/api/chat` runs as a serverless function:
+The Vite dev server also runs the local `/api/chat` middleware for the portfolio chatbot. Make sure `.env` contains `GROQ_API_KEY`, then run:
 
 ```bash
-npm install -g vercel
-vercel dev
+npm run dev
 ```
 
 ### Build for Production
