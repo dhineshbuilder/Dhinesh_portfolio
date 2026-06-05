@@ -17,10 +17,10 @@ import { useLoadMore } from "../../hooks/useLoadMore";
 import { useContent } from "../../context/ContentContext";
 
 const ImageLightbox = ({ src, onClose }) => createPortal(
-    <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 bg-[#0b1a2b]/95 backdrop-blur-xl" onClick={onClose}>
+    <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 bg-primary/95 backdrop-blur-xl" onClick={onClose}>
         <button
             type="button"
-            className="absolute top-6 right-6 text-slate-300 hover:text-white p-2 transition-transform hover:scale-110"
+            className="absolute top-6 right-6 text-main/65 hover:text-accent p-2 transition-transform hover:scale-110"
             onClick={onClose}
         >
             <FaTimes size={32} />
@@ -32,7 +32,7 @@ const ImageLightbox = ({ src, onClose }) => createPortal(
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
             src={src}
             alt="Zoomed Event Photo"
-            className="max-w-full max-h-[90vh] rounded-xl shadow-2xl object-contain border border-slate-700/50"
+            className="max-w-full max-h-[90vh] rounded-xl shadow-2xl object-contain border border-main/10"
             onClick={(event) => event.stopPropagation()}
         />
     </div>,
@@ -59,7 +59,7 @@ const HackathonModal = ({ hackathon, labels, onClose }) => {
 
     return createPortal(
         <div
-            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 bg-main/40 backdrop-blur-sm"
             onClick={onClose}
         >
             <Motion.div
@@ -73,7 +73,7 @@ const HackathonModal = ({ hackathon, labels, onClose }) => {
                 <button
                     type="button"
                     onClick={onClose}
-                    className="absolute top-4 right-4 z-20 p-2 rounded-full bg-slate-800/50 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors backdrop-blur-md"
+                    className="absolute top-4 right-4 z-20 p-2 rounded-full bg-secondary/80 text-main/65 hover:text-accent hover:bg-secondary transition-colors backdrop-blur-md"
                 >
                     <FaTimes size={20} />
                 </button>
@@ -103,8 +103,8 @@ const HackathonModal = ({ hackathon, labels, onClose }) => {
                         </div>
 
                         {hackathon.achievement && (
-                            <div className="inline-flex shrink-0 items-center gap-2.5 px-5 py-2.5 bg-amber-500/15 text-amber-500 border border-amber-500/30 rounded-full font-bold shadow-[0_0_15px_rgba(245,158,11,0.15)] mt-2 sm:mt-0 text-sm tracking-wide">
-                                <FaTrophy className="text-amber-500" /> {hackathon.achievement}
+                            <div className="inline-flex shrink-0 items-center gap-2.5 px-5 py-2.5 bg-brand-secondary/10 text-brand-secondary border border-brand-secondary/30 rounded-full font-bold shadow-[0_0_15px_rgba(79,70,229,0.15)] mt-2 sm:mt-0 text-sm tracking-wide">
+                                <FaTrophy className="text-brand-secondary" /> {hackathon.achievement}
                             </div>
                         )}
                     </div>
@@ -113,7 +113,7 @@ const HackathonModal = ({ hackathon, labels, onClose }) => {
                 <div className="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 flex-shrink-0">
                     {hackathon.projectScreenshot && (
                         <div className="flex items-start justify-center">
-                            <div className="w-full rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.18)] border border-main/15 bg-black aspect-video lg:aspect-[4/3] max-h-[340px]">
+                            <div className="w-full rounded-xl overflow-hidden shadow-[0_14px_30px_rgba(24,37,42,0.12)] border border-main/15 bg-secondary/40 aspect-video lg:aspect-[4/3] max-h-[340px]">
                                 <img
                                     src={hackathon.projectScreenshot}
                                     alt={hackathon.projectTitle}
@@ -165,7 +165,7 @@ const HackathonModal = ({ hackathon, labels, onClose }) => {
                                 </a>
                             )}
                             {hackathon.certificate && (
-                                <a href={hackathon.certificate} target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center gap-2 px-3 py-3 rounded-lg border-2 border-amber-500 bg-amber-500 text-onaccent font-bold text-sm lg:text-base hover:bg-amber-400 hover:border-amber-400 transition-all active:scale-95 whitespace-nowrap">
+                                <a href={hackathon.certificate} target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center gap-2 px-3 py-3 rounded-lg border-2 border-brand-secondary bg-brand-secondary text-onaccent font-bold text-sm lg:text-base hover:bg-brand-secondary/90 hover:border-brand-secondary/90 transition-all active:scale-95 whitespace-nowrap">
                                     <FaCertificate size={15} /> {labels.certificate}
                                 </a>
                             )}
@@ -210,7 +210,7 @@ const HackathonCard = ({ hackathon, labels, onClick }) => (
         onClick={onClick}
         className="relative z-10 flex flex-col bg-secondary/30 rounded-2xl overflow-hidden border border-main/15 hover:border-accent/40 shadow-lg hover:shadow-[0_8px_25px_rgba(var(--accent-rgb),0.15)] transition-all cursor-pointer group"
     >
-        <div className="relative aspect-video w-full overflow-hidden bg-black border-b border-main/15">
+        <div className="relative aspect-video w-full overflow-hidden bg-secondary/40 border-b border-main/15">
             <img
                 src={hackathon.projectScreenshot}
                 alt={hackathon.title}
@@ -218,8 +218,8 @@ const HackathonCard = ({ hackathon, labels, onClick }) => (
             />
 
             {hackathon.achievement && (
-                <div className="absolute top-3 right-3 z-20 px-3 py-1 bg-[#1e293b]/90 backdrop-blur-md text-amber-400 border border-amber-500/30 rounded-full font-bold text-xs shadow-lg flex items-center gap-1.5">
-                    <FaTrophy className="text-amber-500" /> {hackathon.achievement}
+                <div className="absolute top-3 right-3 z-20 px-3 py-1 bg-white/90 backdrop-blur-md text-brand-secondary border border-brand-secondary/30 rounded-full font-bold text-xs shadow-lg flex items-center gap-1.5">
+                    <FaTrophy className="text-brand-secondary" /> {hackathon.achievement}
                 </div>
             )}
         </div>
@@ -261,7 +261,7 @@ const HackathonCard = ({ hackathon, labels, onClick }) => (
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(event) => event.stopPropagation()}
-                        className="inline-flex items-center gap-1.5 self-start text-xs font-semibold text-amber-400 hover:text-amber-300 hover:bg-amber-500/20 border border-amber-500/30 bg-amber-500/10 px-3 py-1.5 rounded-md transition-colors"
+                        className="inline-flex items-center gap-1.5 self-start text-xs font-semibold text-brand-secondary hover:text-brand-secondary hover:bg-brand-secondary/15 border border-brand-secondary/30 bg-brand-secondary/10 px-3 py-1.5 rounded-md transition-colors"
                     >
                         <FaCertificate size={12} /> {labels.certificate}
                     </a>

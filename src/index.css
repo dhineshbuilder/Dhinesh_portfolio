@@ -4,43 +4,27 @@
 
 @layer base {
   :root {
-    /* Light mode tokens */
     --color-primary: 248 250 252;
-    --color-secondary: 226 232 240;
+    --color-secondary: 239 246 255;
     --color-text-main: 15 23 42;
-    --color-accent: 14 165 233;
-    --color-on-accent: 2 6 23;
+    --color-accent: 37 99 235;
+    --color-on-accent: 255 255 255;
+    --color-brand-primary: 37 99 235;
+    --color-brand-secondary: 79 70 229;
+    --color-brand-accent: 6 182 212;
+    --accent-rgb: 37, 99, 235;
   }
 
   .theme-light {
     --color-primary: 248 250 252;
-    --color-secondary: 226 232 240;
+    --color-secondary: 239 246 255;
     --color-text-main: 15 23 42;
-    --color-accent: 14 165 233;
-    --color-on-accent: 2 6 23;
-  }
-
-  .theme-dark-blue {
-    /* Existing dark-blue palette */
-    --color-primary: 15 23 42;
-    --color-secondary: 30 41 59;
-    --color-text-main: 226 232 240;
-    --color-accent: 56 189 248;
-    --color-on-accent: 2 6 23;
-  }
-
-  .theme-black {
-    /* New black palette */
-    --color-primary: 3 7 18;
-    --color-secondary: 15 23 42;
-    --color-text-main: 241 245 249;
-    --color-accent: 6 182 212;
-    --color-on-accent: 2 6 23;
-  }
-
-  /* Keep Tailwind dark: variants active for both dark themes. */
-  .dark {
-    color-scheme: dark;
+    --color-accent: 37 99 235;
+    --color-on-accent: 255 255 255;
+    --color-brand-primary: 37 99 235;
+    --color-brand-secondary: 79 70 229;
+    --color-brand-accent: 6 182 212;
+    --accent-rgb: 37, 99, 235;
   }
 
   html {
@@ -49,10 +33,32 @@
 
   body {
     @apply bg-primary text-main antialiased transition-colors duration-300;
+    color-scheme: light;
+    background:
+      linear-gradient(140deg, rgba(248, 250, 252, 0.98) 0%, rgba(239, 246, 255, 0.92) 42%, rgba(238, 242, 255, 0.86) 72%, rgba(236, 254, 255, 0.72) 100%),
+      repeating-linear-gradient(90deg, rgba(15, 23, 42, 0.028) 0 1px, transparent 1px 72px),
+      repeating-linear-gradient(0deg, rgba(15, 23, 42, 0.024) 0 1px, transparent 1px 72px);
   }
 }
 
 @layer utilities {
+  @keyframes skills-gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .skills-gradient-surface {
+    background:
+      linear-gradient(120deg, rgba(37, 99, 235, 0.12), rgba(79, 70, 229, 0.08), rgba(6, 182, 212, 0.12), rgba(248, 250, 252, 0.9));
+    background-size: 220% 220%;
+    animation: skills-gradient-shift 16s ease-in-out infinite;
+  }
+
   .perspective-1000 {
     perspective: 1000px;
   }

@@ -31,7 +31,7 @@ const Modal = ({ isOpen, onClose, title, children, maxWidthClass = "max-w-5xl" }
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.25, ease: "easeOut" }}
-                    className="fixed inset-0 z-[9999] bg-black/70 backdrop-blur-sm p-3 sm:p-6 flex items-center justify-center"
+                    className="fixed inset-0 z-[9999] bg-main/40 backdrop-blur-sm p-3 sm:p-6 flex items-center justify-center"
                     onClick={onClose}
                 >
                     <motion.div
@@ -39,20 +39,20 @@ const Modal = ({ isOpen, onClose, title, children, maxWidthClass = "max-w-5xl" }
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.96, y: 12 }}
                         transition={{ type: "spring", stiffness: 280, damping: 26 }}
-                        className={`relative w-full ${maxWidthClass} max-h-[92vh] sm:max-h-[90vh] overflow-hidden rounded-2xl border border-slate-700/60 bg-primary shadow-2xl`}
+                        className={`relative w-full ${maxWidthClass} max-h-[92vh] sm:max-h-[90vh] overflow-hidden rounded-2xl border border-main/10 bg-primary shadow-2xl`}
                         onClick={(event) => event.stopPropagation()}
                     >
                         <button
                             type="button"
                             onClick={onClose}
-                            className="absolute top-4 right-4 z-20 p-2 rounded-full bg-slate-800/70 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors"
+                            className="absolute top-4 right-4 z-20 p-2 rounded-full bg-secondary/80 text-main/65 hover:text-accent hover:bg-secondary transition-colors"
                             aria-label="Close modal"
                         >
                             <FaTimes size={18} />
                         </button>
 
                         {title && (
-                            <div className="px-4 py-4 sm:px-8 sm:py-5 border-b border-slate-700/50 bg-secondary/40">
+                            <div className="px-4 py-4 sm:px-8 sm:py-5 border-b border-main/10 bg-secondary/45">
                                 <h3 className="pr-12 text-base font-bold leading-snug text-main sm:text-xl">{title}</h3>
                             </div>
                         )}

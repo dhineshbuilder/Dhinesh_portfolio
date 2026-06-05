@@ -1,297 +1,232 @@
-import React, { useEffect, useRef } from "react";
-import { FaExternalLinkAlt, FaGithub, FaGooglePlay } from "react-icons/fa";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import VanillaTilt from "vanilla-tilt";
+import {
+    FaArrowUpRightFromSquare,
+    FaCheck,
+    FaGithub,
+    FaGooglePlay,
+    FaLayerGroup,
+} from "react-icons/fa6";
 import { useContent } from "../../context/ContentContext";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const PROJECT_GRADIENTS = [
-    ["#0f172a", "#164e63"],
-    ["#172554", "#1d4ed8"],
-    ["#1f2937", "#0f766e"],
-    ["#312e81", "#7c3aed"],
-    ["#0f172a", "#9333ea"],
-    ["#111827", "#ea580c"],
-];
-
 const DEFAULT_PROJECT_DESCRIPTION =
-    "A selection of full-stack products, frontend builds, and motion-rich interfaces designed with clean structure and strong usability.";
+    "Selected AI, full-stack, and product-focused projects built around real problems, practical workflows, and clean user experience.";
 
-const ProjectCard = ({ project, index, labels, registerCard }) => {
-    const [startColor, endColor] = PROJECT_GRADIENTS[index % PROJECT_GRADIENTS.length];
-    const visibleTech = project.tech.slice(0, 8);
-
-    return (
-        <article
-            ref={registerCard(index)}
-            className="project-card group perspective-1000 relative mx-auto w-full max-w-[32rem] lg:mx-0 lg:h-[21rem] lg:w-[32rem] lg:shrink-0 lg:snap-start"
-        >
-            <div 
-                className="relative w-full transition-transform duration-700 lg:h-full lg:preserve-3d lg:group-hover:rotate-y-180"
+const ProjectActions = ({ project, labels }) => (
+    <div className="flex flex-wrap gap-3">
+        {project.demo && (
+            <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2.5 text-xs font-black text-onaccent shadow-[0_12px_28px_rgba(37,99,235,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent/90"
             >
-                {/* Front Side: ONLY Image */}
-                <div className="relative overflow-hidden rounded-t-[1.5rem] border border-white/10 bg-slate-900 shadow-xl lg:absolute lg:inset-0 lg:rounded-[1.75rem] lg:backface-hidden">
-                    <img
-                        key={`${project.id}-${project.image}`}
-                        src={project.image}
-                        alt={project.title}
-                        draggable={false}
-                        className="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-105 sm:h-64 lg:h-full"
-                    />
-                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
-                    
-                    {/* Subtle Title Overlay on Front */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                        <h3 className="text-lg sm:text-xl font-bold text-white">{project.title}</h3>
-                    </div>
+                <FaArrowUpRightFromSquare size={12} />
+                {labels.demo}
+            </a>
+        )}
+
+        {project.github && (
+            <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-main/15 bg-white px-4 py-2.5 text-xs font-black text-main/75 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/30 hover:text-accent"
+            >
+                <FaGithub size={14} />
+                {labels.github}
+            </a>
+        )}
+
+        {project.playStore && (
+            <a
+                href={project.playStore}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-brand-accent/25 bg-brand-accent/10 px-4 py-2.5 text-xs font-black text-cyan-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-accent/40 hover:bg-brand-accent hover:text-white"
+            >
+                <FaGooglePlay size={13} />
+                {labels.playStore}
+            </a>
+        )}
+    </div>
+);
+
+const TechTags = ({ tech = [], compact = false }) => (
+    <div className="flex flex-wrap gap-2">
+        {tech.slice(0, compact ? 5 : 8).map((tag) => (
+            <span
+                key={tag}
+                className="rounded-full border border-main/10 bg-white/70 px-3 py-1.5 text-[0.68rem] font-black text-main/68"
+            >
+                {tag}
+            </span>
+        ))}
+    </div>
+);
+
+const FeaturedProject = ({ project, index, labels }) => (
+    <article
+        className={`group overflow-hidden rounded-[24px] border border-main/10 bg-white/86 shadow-[0_20px_52px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/25 hover:shadow-[0_26px_68px_rgba(37,99,235,0.13)] ${
+            index === 0 ? "xl:col-span-2" : ""
+        }`}
+    >
+        <div className={`grid h-full ${index === 0 ? "lg:grid-cols-[1.05fr_0.95fr]" : ""}`}>
+            <div className="relative min-h-[17rem] border-b border-main/10 bg-[linear-gradient(135deg,rgba(239,246,255,0.92)_0%,rgba(236,254,255,0.74)_100%)] lg:border-b-0 lg:border-r">
+                <img
+                    src={project.image}
+                    alt={project.title}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                    draggable={false}
+                    className="h-full w-full object-contain p-5 transition-transform duration-500 group-hover:scale-[1.025]"
+                />
+                <span className="absolute left-4 top-4 rounded-full border border-accent/20 bg-white/90 px-3 py-1 text-[0.66rem] font-black uppercase tracking-[0.18em] text-accent shadow-sm">
+                    Featured {String(index + 1).padStart(2, "0")}
+                </span>
+            </div>
+
+            <div className="flex h-full flex-col p-5 sm:p-6">
+                <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.18em] text-accent">
+                    <FaLayerGroup />
+                    Case Study
                 </div>
 
-                {/* Back Side: Details & Links */}
-                <div 
-                    className="relative flex min-h-[18rem] flex-col justify-between overflow-hidden rounded-b-[1.5rem] border border-white/15 p-5 shadow-2xl sm:p-6 lg:absolute lg:inset-0 lg:min-h-0 lg:rotate-y-180 lg:rounded-[1.75rem] lg:p-8 lg:backface-hidden"
-                    style={{ background: `linear-gradient(135deg, ${startColor} 0%, ${endColor} 100%)` }}
-                >
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.1),transparent_40%)] opacity-50" />
-                    
-                    <div className="relative z-10">
-                        <p className="text-[0.6rem] sm:text-[0.65rem] font-bold uppercase tracking-[0.28em] sm:tracking-[0.4em] text-white/60">
-                            Project {String(index + 1).padStart(2, "0")}
-                        </p>
-                        
-                        <h3 className="mt-3 text-xl sm:text-2xl font-bold leading-tight text-white lg:line-clamp-1">
-                            {project.title}
-                        </h3>
+                <h3 className="mt-4 text-2xl font-black tracking-tight text-main sm:text-3xl">
+                    {project.title}
+                </h3>
 
-                        <p
-                            className="mt-3 text-xs leading-relaxed text-white/85 sm:text-sm lg:line-clamp-4"
-                        >
-                            {project.description}
-                        </p>
+                <p className="mt-3 text-sm leading-relaxed text-main/68">
+                    {project.description}
+                </p>
 
-                        <div className="mt-4 sm:mt-5 flex flex-wrap gap-2">
-                            {visibleTech.map((tag) => (
-                                <span
-                                    key={`${project.id}-${tag}-chip`}
-                                    className="rounded-full border border-white/15 bg-black/20 px-3 py-1 text-[0.6rem] font-bold uppercase tracking-wider text-white/90 backdrop-blur-sm"
-                                >
-                                    {tag}
+                {project.problem && (
+                    <div className="mt-5 rounded-2xl border border-main/10 bg-primary/70 p-4">
+                        <p className="text-xs font-black uppercase tracking-[0.18em] text-accent">
+                            Problem Solved
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-main/70">
+                            {project.problem}
+                        </p>
+                    </div>
+                )}
+
+                {project.features?.length > 0 && (
+                    <div className="mt-5 grid gap-2">
+                        {project.features.slice(0, 4).map((feature) => (
+                            <div key={feature} className="flex items-start gap-2 text-sm text-main/70">
+                                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
+                                    <FaCheck size={10} />
                                 </span>
-                            ))}
-                        </div>
+                                <span>{feature}</span>
+                            </div>
+                        ))}
                     </div>
+                )}
 
-                    <div className="relative z-10 flex flex-wrap gap-3 pt-5 sm:pt-6">
-                        {project.github && (
-                            <a
-                                href={project.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold text-white transition-all hover:border-white hover:bg-white hover:text-slate-950"
-                            >
-                                <FaGithub size={14} />
-                                {labels.github}
-                            </a>
-                        )}
+                <div className="mt-5">
+                    <TechTags tech={project.tech} />
+                </div>
 
-                        {project.demo && (
-                            <a
-                                href={project.demo}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 rounded-xl border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-xs font-bold text-white transition-all hover:border-cyan-400 hover:bg-cyan-400 hover:text-slate-950"
-                            >
-                                <FaExternalLinkAlt size={12} />
-                                {labels.demo}
-                            </a>
-                        )}
-
-                        {project.playStore && (
-                            <a
-                                href={project.playStore}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 rounded-xl border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-xs font-bold text-white transition-all hover:border-emerald-400 hover:bg-emerald-400 hover:text-slate-950"
-                            >
-                                <FaGooglePlay size={12} />
-                                {labels.playStore}
-                            </a>
-                        )}
-                    </div>
+                <div className="mt-6">
+                    <ProjectActions project={project} labels={labels} />
                 </div>
             </div>
-        </article>
-    );
-};
+        </div>
+    </article>
+);
+
+const CompactProject = ({ project, labels }) => (
+    <article className="group flex h-full flex-col overflow-hidden rounded-[22px] border border-main/10 bg-white/78 shadow-[0_16px_40px_rgba(15,23,42,0.07)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/25 hover:shadow-[0_22px_52px_rgba(37,99,235,0.11)]">
+        <div className="relative min-h-[12rem] border-b border-main/10 bg-secondary/55">
+            <img
+                src={project.image}
+                alt={project.title}
+                loading="lazy"
+                decoding="async"
+                draggable={false}
+                className="h-full w-full object-contain p-5 transition-transform duration-500 group-hover:scale-[1.03]"
+            />
+        </div>
+
+        <div className="flex flex-1 flex-col p-5">
+            <h3 className="text-lg font-black leading-tight text-main">
+                {project.title}
+            </h3>
+            <p className="mt-3 flex-1 text-sm leading-relaxed text-main/65">
+                {project.description}
+            </p>
+
+            <div className="mt-5">
+                <TechTags tech={project.tech} compact />
+            </div>
+
+            <div className="mt-6">
+                <ProjectActions project={project} labels={labels} />
+            </div>
+        </div>
+    </article>
+);
 
 const Projects = () => {
-    const sectionRef = useRef(null);
-    const railViewportRef = useRef(null);
-    const railTrackRef = useRef(null);
-    const cardRefs = useRef([]);
     const { content } = useContent();
     const { projects } = content;
-
-    const registerCard = (index) => (node) => {
-        if (node) {
-            cardRefs.current[index] = node;
-            return;
-        }
-
-        delete cardRefs.current[index];
-    };
-
-    useEffect(() => {
-        const cards = cardRefs.current.filter(Boolean);
-
-        if (!cards.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            return undefined;
-        }
-
-        VanillaTilt.init(cards, {
-            max: 4,
-            speed: 400,
-            glare: true,
-            "max-glare": 0.18,
-            gyroscope: false,
-        });
-
-        return () => {
-            cards.forEach((card) => card.vanillaTilt?.destroy());
-        };
-    }, [projects.items]);
-
-    useGSAP(() => {
-        const section = sectionRef.current;
-        const viewport = railViewportRef.current;
-        const track = railTrackRef.current;
-
-        if (!section || !viewport || !track) {
-            return undefined;
-        }
-
-        const mm = gsap.matchMedia();
-
-        mm.add(
-            {
-                desktop: "(min-width: 1024px)",
-                motionAllowed: "(prefers-reduced-motion: no-preference)",
-            },
-            (context) => {
-                const { desktop, motionAllowed } = context.conditions;
-                let horizontalTween;
-                let horizontalTrigger;
-                const projectCards = section.querySelectorAll(".project-card");
-
-                gsap.set(projectCards, { clearProps: "opacity,visibility" });
-
-                const revealTween = gsap.from(section.querySelectorAll(".projects-copy"), {
-                    y: 44,
-                    opacity: 0,
-                    duration: 0.85,
-                    stagger: 0.08,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: section,
-                        start: "top 72%",
-                        once: true,
-                    },
-                });
-
-                const resetRail = () => {
-                    gsap.set(track, { clearProps: "transform" });
-                    viewport.style.removeProperty("overflow-x");
-                    viewport.style.removeProperty("overflow-y");
-                };
-
-                resetRail();
-
-                if (desktop && motionAllowed) {
-                    const getHorizontalDistance = () =>
-                        Math.max(track.scrollWidth - viewport.clientWidth, 0);
-
-                    if (getHorizontalDistance() > 0) {
-                        viewport.style.overflowX = "hidden";
-                        viewport.style.overflowY = "visible";
-
-                        horizontalTween = gsap.to(track, {
-                            x: () => -getHorizontalDistance(),
-                            ease: "none",
-                        });
-
-                        horizontalTrigger = ScrollTrigger.create({
-                            trigger: section,
-                            start: "top top",
-                            end: () => `+=${getHorizontalDistance()}`,
-                            scrub: 1,
-                            pin: true,
-                            anticipatePin: 1,
-                            invalidateOnRefresh: true,
-                            animation: horizontalTween,
-                        });
-                    }
-                } else {
-                    viewport.style.overflowX = "auto";
-                    viewport.style.overflowY = "hidden";
-                }
-
-                return () => {
-                    horizontalTrigger?.kill();
-                    horizontalTween?.kill();
-                    revealTween.scrollTrigger?.kill();
-                    revealTween.kill();
-                    gsap.set(projectCards, { clearProps: "opacity,visibility" });
-                    resetRail();
-                };
-            }
-        );
-
-        return () => mm.revert();
-    }, { scope: sectionRef, dependencies: [projects.items] });
+    const featuredProjects = projects.items.filter((project) => project.featured).slice(0, 3);
+    const supportingProjects = projects.items.filter((project) => !project.featured);
 
     return (
         <section
             id="projects"
-            ref={sectionRef}
-            className="relative scroll-mt-0 overflow-hidden py-16 sm:py-20 lg:min-h-screen lg:py-20"
+            className="relative overflow-hidden border-b border-main/10 bg-white/62 py-14 sm:py-16 lg:py-20"
         >
-            <div id="projects-anchor" className="absolute -top-16 left-0 w-px h-px pointer-events-none" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.12),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(37,99,235,0.14),transparent_32%)]" />
-
-            <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col px-4 sm:px-6 lg:max-w-none lg:px-8">
-                <div className="projects-copy max-w-3xl">
-                    <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.28em] sm:tracking-[0.35em] text-accent/80">
-                        {projects.titlePrefix}
+            <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="mx-auto max-w-3xl text-center">
+                    <p className="text-xs font-black uppercase tracking-[0.24em] text-accent sm:text-sm">
+                        {projects.eyebrow || projects.titlePrefix}
                     </p>
 
-                    <h2 className="mt-3 sm:mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-                        <span className="text-accent">{projects.titleHighlight}</span>
+                    <h2 className="mt-3 text-3xl font-black tracking-tight text-main sm:text-4xl lg:text-5xl">
+                        {projects.title || projects.titleHighlight}
                     </h2>
 
-
+                    <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-main/68 sm:text-base">
+                        {projects.description || DEFAULT_PROJECT_DESCRIPTION}
+                    </p>
                 </div>
 
-                <div
-                    ref={railViewportRef}
-                    className="project-rail mt-8 overflow-visible pb-4 sm:mt-10 lg:mt-12 lg:overflow-x-auto lg:snap-x lg:snap-mandatory"
-                >
-                    <div
-                        ref={railTrackRef}
-                        className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:flex lg:w-max lg:gap-8 lg:pr-8"
-                    >
-                        {projects.items.map((project, index) => (
-                            <ProjectCard
-                                key={`${project.id}-${project.title}-${project.image}`}
-                                project={project}
-                                index={index}
-                                labels={projects.labels}
-                                registerCard={registerCard}
-                            />
-                        ))}
+                <div className="mt-10 grid grid-cols-1 gap-5 xl:grid-cols-2">
+                    {featuredProjects.map((project, index) => (
+                        <FeaturedProject
+                            key={`${project.id}-${project.title}`}
+                            project={project}
+                            index={index}
+                            labels={projects.labels}
+                        />
+                    ))}
+                </div>
+
+                {supportingProjects.length > 0 && (
+                    <div className="mt-12">
+                        <div className="mb-5 flex items-end justify-between gap-4">
+                            <div>
+                                <p className="text-xs font-black uppercase tracking-[0.22em] text-accent">
+                                    More Builds
+                                </p>
+                                <h3 className="mt-2 text-2xl font-black text-main">
+                                    Supporting Projects
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+                            {supportingProjects.map((project) => (
+                                <CompactProject
+                                    key={`${project.id}-${project.title}`}
+                                    project={project}
+                                    labels={projects.labels}
+                                />
+                            ))}
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
         </section>
     );

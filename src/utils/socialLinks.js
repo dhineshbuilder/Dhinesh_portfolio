@@ -2,7 +2,6 @@ import {
     FaEnvelope,
     FaGithub,
     FaGlobe,
-    FaInstagram,
     FaLinkedinIn,
     FaXTwitter,
     FaYoutube,
@@ -11,7 +10,6 @@ import {
 export const socialIconMap = {
     github: FaGithub,
     linkedin: FaLinkedinIn,
-    instagram: FaInstagram,
     twitter: FaXTwitter,
     x: FaXTwitter,
     website: FaGlobe,
@@ -21,13 +19,12 @@ export const socialIconMap = {
 };
 
 export const socialHoverClassMap = {
-    github: "hover:text-white",
+    github: "hover:text-main",
     linkedin: "hover:text-[#0a66c2]",
-    instagram: "hover:text-[#e4405f]",
-    twitter: "hover:text-slate-100",
-    x: "hover:text-slate-100",
-    website: "hover:text-cyan-300",
-    globe: "hover:text-cyan-300",
+    twitter: "hover:text-main",
+    x: "hover:text-main",
+    website: "hover:text-accent",
+    globe: "hover:text-accent",
     youtube: "hover:text-[#ff0000]",
-    email: "hover:text-emerald-300",
+    email: "hover:text-brand-accent",
 };

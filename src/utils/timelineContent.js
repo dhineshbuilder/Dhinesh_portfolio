@@ -26,10 +26,10 @@ export const createTimelineSlide = ({
     eyebrow = "Milestone",
     title = "",
     subtitle = "",
-    accent = "#38bdf8",
-    accentSoft = "rgba(56, 189, 248, 0.18)",
-    backgroundStart = "#0f172a",
-    backgroundEnd = "#1e293b",
+    accent = "#2563EB",
+    accentSoft = "rgba(37, 99, 235, 0.14)",
+    backgroundStart = "#f8fafc",
+    backgroundEnd = "#ecfeff",
 }) => {
     const svg = `
         <svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -40,30 +40,30 @@ export const createTimelineSlide = ({
                 </linearGradient>
                 <linearGradient id="timeline-accent" x1="232" y1="194" x2="936" y2="522" gradientUnits="userSpaceOnUse">
                     <stop stop-color="${escapeSvgValue(accent)}" />
-                    <stop offset="1" stop-color="#f8fafc" stop-opacity="0.35" />
+                    <stop offset="0.52" stop-color="#4F46E5" stop-opacity="0.76" />
+                    <stop offset="1" stop-color="#06B6D4" stop-opacity="0.76" />
                 </linearGradient>
-                <filter id="timeline-blur" x="0" y="0" width="1280" height="720" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feGaussianBlur stdDeviation="50" />
-                </filter>
             </defs>
             <rect width="1280" height="720" rx="32" fill="url(#timeline-bg)" />
-            <g opacity="0.9" filter="url(#timeline-blur)">
-                <circle cx="1068" cy="136" r="118" fill="${escapeSvgValue(accentSoft)}" />
-                <circle cx="232" cy="604" r="144" fill="${escapeSvgValue(accentSoft)}" />
+            <g opacity="0.95">
+                <path d="M-20 608L454 116L542 196L68 688H-20V608Z" fill="${escapeSvgValue(accentSoft)}" />
+                <path d="M892 -12H1280V132L996 416L902 338L1214 24H892V-12Z" fill="rgba(6, 182, 212, 0.12)" />
+                <path d="M0 684H1280" stroke="rgba(15, 23, 42, 0.08)" stroke-width="2" />
+                <path d="M0 626H1280" stroke="rgba(15, 23, 42, 0.055)" stroke-width="2" />
             </g>
-            <rect x="92" y="82" width="1096" height="556" rx="30" fill="rgba(15, 23, 42, 0.48)" stroke="rgba(148, 163, 184, 0.18)" stroke-width="2"/>
-            <rect x="124" y="118" width="184" height="42" rx="21" fill="rgba(248, 250, 252, 0.08)" />
+            <rect x="92" y="82" width="1096" height="556" rx="30" fill="rgba(255, 255, 255, 0.76)" stroke="rgba(15, 23, 42, 0.10)" stroke-width="2"/>
+            <rect x="124" y="118" width="184" height="42" rx="21" fill="rgba(37, 99, 235, 0.10)" />
             <text x="216" y="145" text-anchor="middle" fill="${escapeSvgValue(accent)}" font-size="20" font-family="Space Grotesk, Inter, sans-serif" font-weight="700" letter-spacing="4">
                 ${escapeSvgValue(eyebrow).toUpperCase()}
             </text>
             <foreignObject x="124" y="206" width="968" height="154">
-                <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Space Grotesk, Inter, sans-serif; color: white; font-size: 64px; line-height: 1.08; font-weight: 700; letter-spacing: 0.01em; overflow-wrap: break-word;">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Space Grotesk, Inter, sans-serif; color: #0F172A; font-size: 64px; line-height: 1.08; font-weight: 700; letter-spacing: 0.01em; overflow-wrap: break-word;">
                     ${escapeSvgValue(title)}
                 </div>
             </foreignObject>
             <rect x="124" y="376" width="812" height="4" rx="2" fill="url(#timeline-accent)" />
             <foreignObject x="124" y="416" width="968" height="150">
-                <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Space Grotesk, Inter, sans-serif; color: rgba(226, 232, 240, 0.88); font-size: 30px; line-height: 1.45; font-weight: 500; letter-spacing: 0.01em;">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Space Grotesk, Inter, sans-serif; color: #475569; font-size: 30px; line-height: 1.45; font-weight: 500; letter-spacing: 0.01em;">
                     ${escapeSvgValue(subtitle)}
                 </div>
             </foreignObject>
@@ -75,12 +75,12 @@ export const createTimelineSlide = ({
 
 export const createTimelineBadge = ({
     label = "MILESTONE",
-    accent = "#38bdf8",
-    background = "#0f172a",
+    accent = "#2563EB",
+    background = "#ffffff",
 }) => {
     const svg = `
         <svg width="144" height="40" viewBox="0 0 144 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="1" y="1" width="142" height="38" rx="19" fill="${escapeSvgValue(background)}" fill-opacity="0.82" stroke="${escapeSvgValue(accent)}" stroke-opacity="0.45" stroke-width="2"/>
+            <rect x="1" y="1" width="142" height="38" rx="19" fill="${escapeSvgValue(background)}" fill-opacity="0.92" stroke="${escapeSvgValue(accent)}" stroke-opacity="0.38" stroke-width="2"/>
             <text x="72" y="25" text-anchor="middle" fill="${escapeSvgValue(accent)}" font-size="14" font-family="Space Grotesk, Inter, sans-serif" font-weight="700" letter-spacing="2">
                 ${escapeSvgValue(label).toUpperCase()}
             </text>
@@ -107,10 +107,10 @@ const pickHackathonSlide = (hackathon) =>
         eyebrow: "Hackathon",
         title: hackathon?.title || "Hackathon Milestone",
         subtitle: [hackathon?.projectTitle, hackathon?.location].filter(Boolean).join(" - "),
-        accent: "#f59e0b",
-        accentSoft: "rgba(245, 158, 11, 0.18)",
-        backgroundStart: "#111827",
-        backgroundEnd: "#1f2937",
+        accent: "#4F46E5",
+        accentSoft: "rgba(79, 70, 229, 0.14)",
+        backgroundStart: "#eef2ff",
+        backgroundEnd: "#ecfeff",
     });
 
 const buildHackathonCheckpoint = (hackathon, alignment) => ({
@@ -120,8 +120,8 @@ const buildHackathonCheckpoint = (hackathon, alignment) => ({
     size: ITEM_SIZE.SMALL,
     image: createTimelineBadge({
         label: "Hackathon",
-        accent: "#f59e0b",
-        background: "#111827",
+        accent: "#4F46E5",
+        background: "#eef2ff",
     }),
     slideImage: pickHackathonSlide(hackathon),
     shouldDrawLine: true,
@@ -135,17 +135,17 @@ const buildEducationCheckpoint = (entry, alignment) => ({
     size: ITEM_SIZE.SMALL,
     image: createTimelineBadge({
         label: "Education",
-        accent: "#38bdf8",
-        background: "#0f172a",
+        accent: "#2563EB",
+        background: "#eff6ff",
     }),
     slideImage: createTimelineSlide({
         eyebrow: "Education",
         title: entry.degree,
         subtitle: `${entry.institution}${entry.description ? ` - ${entry.description}` : ""}`,
-        accent: "#38bdf8",
-        accentSoft: "rgba(56, 189, 248, 0.18)",
-        backgroundStart: "#0f172a",
-        backgroundEnd: "#1e293b",
+        accent: "#2563EB",
+        accentSoft: "rgba(37, 99, 235, 0.14)",
+        backgroundStart: "#eff6ff",
+        backgroundEnd: "#ecfeff",
     }),
     shouldDrawLine: true,
     alignment,
@@ -190,8 +190,8 @@ export const buildTimelineItemsFromSections = ({
                 size: ITEM_SIZE.SMALL,
                 image: createTimelineBadge({
                     label: "Milestone",
-                    accent: "#38bdf8",
-                    background: "#0f172a",
+                    accent: "#2563EB",
+                    background: "#ffffff",
                 }),
                 slideImage: createTimelineSlide({
                     eyebrow: "Timeline",

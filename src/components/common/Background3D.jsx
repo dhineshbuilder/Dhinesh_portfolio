@@ -5,7 +5,7 @@ import * as random from 'maath/random/dist/maath-random.esm';
 import { useTheme } from '../../context/ThemeContext';
 import { animationConfig } from '../../utils/config';
 
-const Stars = ({ color, size, mouse }) => {
+const Stars = ({ color, size, opacity, mouse }) => {
     const groupRef = useRef();
     const pointsRef = useRef();
     const [sphere] = useState(() => random.inSphere(new Float32Array(animationConfig.background.starCount * 3), { radius: animationConfig.background.radius }));
@@ -33,6 +33,7 @@ const Stars = ({ color, size, mouse }) => {
                 <PointMaterial
                     transparent
                     color={color}
+                    opacity={opacity}
                     size={size}
                     sizeAttenuation={true}
                     depthWrite={false}
@@ -46,22 +47,12 @@ const Background3D = () => {
     const { theme } = useTheme();
     const mouse = useRef([0, 0]);
 
-    // Theme-based styling for stars
-    const isDarkBlue = theme === 'dark-blue';
-    const isBlack = theme === 'black';
-
-    let color = '#475569';
-    let starSize = animationConfig.background.starSize * 2.5;
-
-    if (isDarkBlue) {
-        color = '#ffffff';
-        starSize = animationConfig.background.starSize;
-    }
-
-    if (isBlack) {
-        color = '#e2e8f0';
-        starSize = animationConfig.background.starSize * 1.15;
-    }
+    const isLight = theme === 'light';
+    const color = isLight ? '#2563EB' : '#e2e8f0';
+    const starSize = isLight
+        ? animationConfig.background.starSize * 1.35
+        : animationConfig.background.starSize;
+    const opacity = isLight ? 0.22 : 0.75;
 
     React.useEffect(() => {
         const handleMouseMove = (event) => {
@@ -79,7 +70,7 @@ const Background3D = () => {
     return (
         <div className="fixed inset-0 z-0 pointer-events-none">
             <Canvas camera={{ position: [0, 0, 1] }}>
-                <Stars color={color} size={starSize} mouse={mouse} />
+                <Stars color={color} size={starSize} opacity={opacity} mouse={mouse} />
             </Canvas>
         </div>
     );

@@ -64,16 +64,16 @@ const Education = () => {
                                     <div className={`w-0.5 h-40 bg-accent/20 absolute left-1/2 -translate-x-1/2 ${isEven ? "bottom-1/2" : "top-1/2"}`} />
 
                                     <div className={`w-full px-4 ${isEven ? "mb-80" : "mt-80"}`}>
-                                        <div className="bg-secondary/50 p-6 rounded-2xl border border-slate-700/50 shadow-lg hover:border-accent/40 transition-all duration-300 w-full hover:scale-105 backdrop-blur-sm">
+                                        <div className="bg-white/75 p-6 rounded-2xl border border-main/10 shadow-lg hover:border-accent/35 transition-all duration-300 w-full hover:scale-105 backdrop-blur-sm">
                                             <div className="text-accent font-mono text-xs mb-2">{entry.year}</div>
                                             <h3 className="text-lg font-bold text-main mb-1">{entry.degree}</h3>
-                                            <p className="text-slate-500 text-xs mb-3 font-medium">{entry.institution}</p>
-                                            <p className="text-slate-400 text-sm leading-snug">{entry.description}</p>
+                                            <p className="text-main/55 text-xs mb-3 font-medium">{entry.institution}</p>
+                                            <p className="text-main/65 text-sm leading-snug">{entry.description}</p>
                                         </div>
                                     </div>
 
                                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-                                        <div className="w-14 h-14 rounded-full bg-secondary border-4 border-accent shadow-[0_0_20px_rgba(56,189,248,0.4)] flex items-center justify-center z-20 hover:scale-125 transition-all duration-300">
+                                        <div className="w-14 h-14 rounded-full bg-secondary border-4 border-accent shadow-[0_12px_24px_rgba(var(--accent-rgb),0.18)] flex items-center justify-center z-20 hover:scale-125 transition-all duration-300">
                                             {index === 1 ? <FaGraduationCap className="text-accent text-2xl" /> : <FaUniversity className="text-accent text-2xl" />}
                                         </div>
                                     </div>
@@ -86,15 +86,15 @@ const Education = () => {
                 <div className="md:hidden relative border-l-2 border-accent/20 ml-4 space-y-12 pb-8">
                     {education.items.map((entry, index) => (
                         <div key={entry.id} className="edu-node relative pl-10">
-                            <div className="absolute top-0 left-0 -translate-x-1/2 w-10 h-10 rounded-full bg-secondary border-4 border-accent flex items-center justify-center z-10 shadow-[0_0_10px_rgba(56,189,248,0.3)]">
+                            <div className="absolute top-0 left-0 -translate-x-1/2 w-10 h-10 rounded-full bg-secondary border-4 border-accent flex items-center justify-center z-10 shadow-[0_10px_20px_rgba(var(--accent-rgb),0.16)]">
                                 {index === 1 ? <FaGraduationCap className="text-accent text-lg" /> : <FaUniversity className="text-accent text-lg" />}
                             </div>
 
-                            <div className="bg-secondary/50 p-6 rounded-2xl border border-slate-700/50">
+                            <div className="bg-white/75 p-6 rounded-2xl border border-main/10">
                                 <div className="text-accent font-mono text-xs mb-1">{entry.year}</div>
                                 <h3 className="text-lg font-bold text-main mb-1">{entry.degree}</h3>
-                                <div className="text-slate-500 text-xs mb-2 font-medium">{entry.institution}</div>
-                                <p className="text-slate-400 text-sm">{entry.description}</p>
+                                <div className="text-main/55 text-xs mb-2 font-medium">{entry.institution}</div>
+                                <p className="text-main/65 text-sm">{entry.description}</p>
                             </div>
                         </div>
                     ))}
